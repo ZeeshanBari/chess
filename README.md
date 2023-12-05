@@ -2,7 +2,7 @@
 Chess app built by zeeshan bari & mohammed mirajkar.
 
 ## Table of Contents
-1. [Introduction, Goals, and Requirements](#introduction)
+* [Introduction, Goals, and Requirements](#introduction)
      * [Chess](#chess)
        * [Functional Requirements](#chess-func-req)
        * [Non-Functional Requirements](#chess-nonfunc-req)
@@ -36,8 +36,12 @@ Major components are broken down below.
 - Chess variants
 - Game analytics
 
-### Capacity Estimation and Constraints
-
+### Design Inspiration / Starting Points
+* [OO Design](https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-chess.md)
+* [OO Design 2](https://cseweb.ucsd.edu/classes/fa16/cse110-a/applications/ln/DesignDiscussion.pdf)
+* [OO Design 3 - Sebastian Lague's Implementation](https://github.com/SebLague/Chess-Coding-Adventure/tree/Chess-V1-Unity/Assets/Scripts/Core)
+* [Architecture Design](https://interviewready.io/blog/chess-design-doc)
+* [Architecture Design 2](https://www.linkedin.com/pulse/system-design-interview-two-player-online-chess-game-shubham-pathak/)
 
 ## Messaging <a name="messaging"></a>
 
