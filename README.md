@@ -39,23 +39,24 @@ Major components are broken down below.
 title: Chess Class Structure
 ---
 classDiagram
-    note "Although not technically a 'piece', a pawn will, for all intents and purposes, be considered one"
-
-    %% Types and Interfaces
 
     class Colour{
         <<enumeration>>
         WHITE
         BLACK
     }
-    class Square{
-        -int file
-        -int rank
-        -getSquarePosition()
-        -Colour colour
+
+    class GameStatus{
+        <<enumeration>>
+        Active
+        BlackWin
+        WhtieWin
+        Forfeit
+        Stalemate
+        Resignation
     }
 
-    %% Pieces
+    note for Pawn "Although not technically a 'piece', will be considered one"
 
     Piece <|-- King
     Piece <|-- Queen
@@ -64,19 +65,69 @@ classDiagram
     Piece <|-- Knight
     Piece <|-- Pawn
 
-    class Piece{
-        -Square position
-        -Colour colour
-        -getAvailableMoves()
-    }
+	Square "1" --> "0..1" Piece 
+	Board "1" --> "64" Square
+	Game "1" --> "2" Player 
+	Board "1" --> "2" Player 
+	Game "1" --> "1" Board
+	Player "1" --> "n" Piece
+
     Pawn: -isPromotionAvailable()
     Pawn: -isEnPassantAvailable()
+    King: -bool hasCastled
     King: -canCastle()
 
-    %% Players
+    class Square{
+        -int file
+        -int rank
+        -getFile()
+        -getRank()
+        -getSquarePosition()
+        -Colour colour
+		-Piece|None piece
+    }
+
+    class Piece{
+        -Colour colour
+        -getAvailableMoves()
+        -canMove()
+        -isKilled()
+    }
 
     class Player{
         -Colour colour
         -int elo
+		-int gamesPlayed
+		-List~Game~ gamesHistory 
+		-makeMove()
     }
+
+	Board *-- Square
+
+	class Board{
+		-String fen
+		-List~Square~ board
+		-resetBoard()
+		-setBoardFromFen()
+		-setBoardFromMoves()
+		-getAllAvailableMoves()
+	}
+
+	Game *-- Board
+	Game *-- Player 
+
+	class Game{
+		-Board board
+		-List~string~ gameHistoryFen
+		-Player white
+		-Player black
+		-Player currentTurn
+		-validateMove()
+		-assessCheck()
+		-assessGameOverConditions()
+	}
+
 ```
+
+### System Design 
+<img src="Chess_System_Design.PNG">
