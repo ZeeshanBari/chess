@@ -7,10 +7,6 @@ Chess app built by zeeshan bari & mohammed mirajkar.
        * [Functional Requirements](#chess-func-req)
        * [Non-Functional Requirements](#chess-nonfunc-req)
        * [Possible Extended Improvements](#chess-extended-req)
-     * [Messaging](#messaging)
-       * [Functional Requirements](#messaging-func-req)
-       * [Non-Functional Requirements](#messaging-nonfunc-req)
-       * [Possible Extended Improvements](#messaging-extended-req)
 
 ## Introduction, Goals, and Requirements <a name="introduction"></a>
 The idea is to emulate, only at a fundamental level, our favourite chess web app - lichess, and make improvements wherever possible.
