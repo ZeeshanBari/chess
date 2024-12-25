@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Test Homepage
+          Test amplify
         </a>
       </header>
     </div>
