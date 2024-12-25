@@ -19,7 +19,9 @@ jobs:
         node-version: 18  # Use the version your app requires
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd client  # Navigate to the client directory
+        npm install  # Install dependencies
 
     - name: Build the React app
       run: npm run build
