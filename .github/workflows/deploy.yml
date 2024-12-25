@@ -24,7 +24,9 @@ jobs:
         npm install  # Install dependencies
 
     - name: Build the React app
-      run: npm run build
+      run: |
+        cd client  # Navigate to the client directory
+        npm run build  # Build the React app
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -34,13 +36,6 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Deploy to S3
-      run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }} --delete --exact-timestamps
-
-    # Optional: Cache node_modules to speed up future builds
-    - name: Cache node_modules
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      run: |
+        cd client  # Navigate to the client directory
+        aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }} --delete  # Deploy to S3
